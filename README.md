@@ -1,19 +1,62 @@
 # gosf
 
 #### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
+顺丰接口的代码
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```
+go get gitee.com/wosylf/gosf
+
+client :=gf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", 1)
+client.F下单(body)
+
+
+var (
+	body = `{
+		"cargoDetails": [{
+			"amount": 308.0,
+			"count": 1.0,
+			"name": "君宝牌地毯",
+			"unit": "个",
+			"volume": 0.0,
+			"weight": 0.1
+		}],
+		"contactInfoList": [{
+			"address": "十堰市丹江口市公园路155号",
+			"city": "十堰市",
+			"company": "清雅轩保健品专营店",
+			"contact": "张三丰",
+			"contactType": 1,
+			"county": "武当山风景区",
+			"mobile": "17006805888",
+			"province": "湖北省"
+		}, {
+			"address": "湖北省襄阳市襄城区环城东路122号",
+			"city": "襄阳市",
+			"contact": "郭襄阳",
+			"county": "襄城区",
+			"contactType": 2,
+			"mobile": "18963828829",
+			"province": "湖北省"
+		}],
+		"customsInfo": {},
+		"expressTypeId": 1,
+		"isReturnRoutelabel": 1,
+		"extraInfoList": [],
+		"isOneselfPickup": 0,
+		"language": "zh-CN",
+		"monthlyCard": "7551234567",
+		"orderId": "QIAO-2020069-005",
+		"parcelQty": 1,
+		"payMethod": 1,
+		"totalWeight": 6
+	}`
+)
+
+```
+下个版权将添加相应的结构体，优化使用功能
 
 #### 使用说明
 
