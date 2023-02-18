@@ -32,17 +32,12 @@ func TestF下单(t *testing.T) {
 	}
 
 	//json.Unmarshal([]byte(body), &order)
-	_, err := SF.F下单(&order)
+	res, err := SF.F下单(&order)
 	if err != nil {
 		fmt.Println("err:", err.Error())
+		return
 	}
-	/*
-		错误返回：
-		{"apiErrorMsg":"","apiResponseID":"00018664209DE23FDE271553859C9E3F","apiResultCode":"A1000","apiResultData":"{\"success\":false,\"errorCode\":\"8016\",\"errorMsg\":\"重复下单\",\"msgData\":null}"}
-		正确返回：
-		{"apiErrorMsg":"","apiResponseID":"000186644AFEBA3F9365AD375264A03F","apiResultCode":"A1000","apiResultData":"{\"success\":true,\"errorCode\":\"S0000\",\"errorMsg\":null,\"msgData\":{\"orderId\":\"SF192961670303744\",\"originCode\":\"719\",\"destCode\":\"710\",\"filterResult\":2,\"remark\":\"\",\"url\":null,\"paymentLink\":null,\"isUpstairs\":null,\"isSpecialWarehouseService\":null,\"mappingMark\":null,\"agentMailno\":null,\"returnExtraInfoList\":null,\"waybillNoInfoList\":[{\"waybillType\":1,\"waybillNo\":\"SF7444463102821\",\"boxNo\":null,\"length\":null,\"width\":null,\"height\":null,\"weight\":null,\"volume\":null}],\"routeLabelInfo\":[{\"code\":\"1000\",\"routeLabelData\":{\"waybillNo\":\"SF7444463102821\",\"sourceTransferCode\":\"719\",\"sourceCityCode\":\"719\",\"sourceDeptCode\":\"719\",\"sourceTeamCode\":\"\",\"destCityCode\":\"710\",\"destDeptCode\":\"710BF\",\"destDeptCodeMapping\":\"\",\"destTeamCode\":\"001\",\"destTeamCodeMapping\":\"\",\"destTransferCode\":\"710\",\"destRouteLabel\":\"710BF-011\",\"proName\":\"\",\"cargoTypeCode\":\"T6\",\"limitTypeCode\":\"T6\",\"expressTypeCode\":\"B1\",\"codingMapping\":\"S47\",\"codingMappingOut\":\"\",\"xbFlag\":\"0\",\"printFlag\":\"000000000\",\"twoDimensionCode\":\"MMM={'k1':'710','k2':'710BF','k3':'001','k4':'T4','k5':'SF7444463102821','k6':'A','k7':'dd297476'}\",\"proCode\":\"T  标快\",\"printIcon\":\"00010000\",\"abFlag\":\"A\",\"destPortCode\":\"\",\"destCountry\":\"\",\"destPostCode\":\"\",\"goodsValueTotal\":\"\",\"currencySymbol\":\"\",\"cusBatch\":\"\",\"goodsNumber\":\"\",\"errMsg\":\"\",\"checkCode\":\"dd297476\",\"proIcon\":\"\",\"fileIcon\":\"\",\"fbaIcon\":\"\",\"icsmIcon\":\"\",\"destGisDeptCode\":\"710BF\",\"newIcon\":null,\"sendAreaCode\":null,\"destinationStationCode\":null,\"sxLabelDestCode\":null,\"sxDestTransferCode\":null,\"sxCompany\":null,\"newAbFlag\":null,\"destAddrKeyWord\":\"\",\"rongType\":null,\"waybillIconList\":null},\"message\":\"SF7444463102821:\"}],\"contactInfoList\":null,\"sendStartTm\":null,\"customerRights\":null,\"expressTypeId\":null}}"}
-
-	*/
+	fmt.Println("res:", res)
 }
 
 var (

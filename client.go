@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/base64"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/url"
 	"time"
@@ -85,7 +86,9 @@ func (a *Client) F下单(body *model.SFOrder) (res *model.OrderResponse, err err
 	if err = json.Unmarshal([]byte(bd), res); err != nil {
 		return
 	}
-	fmt.Println("数据是:", res)
+	if !res.Success {
+		err = errors.New(res.ErrorMsg)
+	}
 	return
 }
 

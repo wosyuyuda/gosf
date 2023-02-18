@@ -10,50 +10,26 @@
 go get github.com/wosyuyuda/gosf
 
 client :=sf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
-client.F下单(body)
+order := model.SFOrder{
+		IsReturnRoutelabel: 1,
+		CargoDetails: []model.CargoDetail{
+			{Name: "苹果手机"},
+		},
+		ContactInfoList: []model.ContactInfo{
+			{ContactType: V寄件人, Address: "十堰市丹江口市公园路155号", City: "十堰市", Contact: "张三丰",
+				County: "武当山风景区", Mobile: "17888888888", Province: "湖北省"},
+			{ContactType: V收件人, Address: "湖北省襄阳市襄城区环城东路122号", City: "襄阳市", Contact: "郭襄阳",
+				County: "襄城区", Mobile: "18963828829", Province: "湖北省"},
+		},
+	}
 
-
-var (
-	body = `{
-		"cargoDetails": [{
-			"amount": 308.0,
-			"count": 1.0,
-			"name": "君宝牌地毯",
-			"unit": "个",
-			"volume": 0.0,
-			"weight": 0.1
-		}],
-		"contactInfoList": [{
-			"address": "十堰市丹江口市公园路155号",
-			"city": "十堰市",
-			"company": "清雅轩保健品专营店",
-			"contact": "张三丰",
-			"contactType": 1,
-			"county": "武当山风景区",
-			"mobile": "17006805888",
-			"province": "湖北省"
-		}, {
-			"address": "湖北省襄阳市襄城区环城东路122号",
-			"city": "襄阳市",
-			"contact": "郭襄阳",
-			"county": "襄城区",
-			"contactType": 2,
-			"mobile": "18963828829",
-			"province": "湖北省"
-		}],
-		"customsInfo": {},
-		"expressTypeId": 1,
-		"isReturnRoutelabel": 1,
-		"extraInfoList": [],
-		"isOneselfPickup": 0,
-		"language": "zh-CN",
-		"monthlyCard": "7551234567",
-		"orderId": "QIAO-2020069-005",
-		"parcelQty": 1,
-		"payMethod": 1,
-		"totalWeight": 6
-	}`
-)
+	//json.Unmarshal([]byte(body), &order)
+	res, err := client.F下单(&order)
+	if err != nil {
+		fmt.Println("err:", err.Error())
+		return
+	}
+	fmt.Println("res:", res)
 
 ```
 下个版权将添加相应的结构体，优化使用功能
