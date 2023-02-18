@@ -1,4 +1,4 @@
-package sf
+package gosf
 
 import "testing"
 

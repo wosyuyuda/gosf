@@ -1,4 +1,4 @@
-package sf
+package gosf
 
 import (
 	"crypto/md5"
@@ -9,7 +9,6 @@ import (
 	"net/url"
 	"time"
 
-	//"gitee.com/wosylf/gosf/util"
 	"github.com/wosyuyuda/gosf/util"
 )
 
