@@ -9,7 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"gitee.com/wosylf/gosf/util"
+	//"gitee.com/wosylf/gosf/util"
+	"github.com/wosyuyuda/gosf/util"
 )
 
 type Client struct {
