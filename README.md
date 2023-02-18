@@ -9,7 +9,7 @@
 ```
 go get gitee.com/wosylf/gosf
 
-client :=gf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", 1)
+client :=gf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
 client.F下单(body)
 
 
