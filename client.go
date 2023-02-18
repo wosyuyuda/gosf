@@ -24,14 +24,29 @@ const (
 	V正式环境  = 0
 	顺丰正式环境 = "https://sfapi.sf-express.com"
 	顺丰沙箱环境 = "https://sfapi-sbox.sf-express.com"
-	下单服务   = "EXP_RECE_CREATE_ORDER"
-	查询服务   = "EXP_RECE_SEARCH_ORDER_RESP"
 	下单     = "/std/service"
+
+	V下单服务        = "EXP_RECE_CREATE_ORDER"
+	V查询服务        = "EXP_RECE_SEARCH_ORDER_RESP"
+	V订单取消接口      = "EXP_RECE_UPDATE_ORDER"
+	V路由查询接口      = "EXP_RECE_SEARCH_ROUTES"
+	V子单号申请接口     = "EXP_RECE_GET_SUB_MAILNO"
+	V清单运费查询接口    = "EXP_RECE_QUERY_SFWAYBILL"
+	V仓配退货下单接口    = "EXP_RECE_CREATE_REVERSE_ORDER"
+	V仓配退货消单接口    = "EXP_RECE_CANCEL_REVERSE_ORDER"
+	V派件通知接口      = "EXP_RECE_DELIVERY_NOTICE"
+	V截单转寄退回接口    = "EXP_RECE_WANTED_INTERCEPT"
+	V换货下单接口      = "EXP_RECE_CREATE_EXCHANGE_ORDER"
+	V预下单接口       = "EXP_RECE_PRE_ORDER"
+	V顺丰会员地址簿查询接口 = "COM_RECE_QUERY_ADDRESS_BOOK"
 )
 
 var (
 	支持的服务 = []string{
-		下单服务, 查询服务,
+		V下单服务, V查询服务, V订单取消接口, V路由查询接口, V子单号申请接口,
+		V清单运费查询接口, V仓配退货下单接口, V仓配退货消单接口,
+		V派件通知接口, V截单转寄退回接口, V换货下单接口, V预下单接口,
+		V顺丰会员地址簿查询接口,
 	}
 )
 
@@ -52,7 +67,7 @@ func (a *Client) F下单(body string) (by []byte, err error) {
 	data := map[string]interface{}{}
 	json.Unmarshal([]byte(body), &data)
 
-	by, err = a.F发送请求(下单服务, data)
+	by, err = a.F发送请求(V下单服务, data)
 	if err != nil {
 		return
 	}
@@ -62,10 +77,14 @@ func (a *Client) F下单(body string) (by []byte, err error) {
 
 //body为结构体
 func (a *Client) F发送请求(serverid string, body interface{}) (by []byte, err error) {
-	switch serverid {
-	case 下单服务, 查询服务:
-	default:
-		err = errors.New("未在服务列表")
+	是否包含 := false
+	for _, v := range 支持的服务 {
+		if v == serverid {
+			是否包含 = true
+		}
+	}
+	if !是否包含 {
+		err = errors.New("暂未包含此服务")
 		return
 	}
 	myurl := 下单
@@ -79,18 +98,18 @@ func (a *Client) F发送请求(serverid string, body interface{}) (by []byte, er
 	//把结构体转成json字符串，再生成签名
 	by, _ = json.Marshal(body)
 	msgdata := string(by)
-	md5s := a.F生成签名(msgdata + ti + a.V检验码)
-	//fmt.Println(md5s)
-	myurl += "&msgDigest=" + md5s
 
-	myurl += "&msgData=" + string(by)
+	//fmt.Println(md5s)
+	myurl += "&msgDigest=" + a.F生成签名(msgdata+ti+a.V检验码)
+
+	myurl += "&msgData=" + msgdata
 
 	//return a.发送(myurl, "")
-	url1 := 顺丰正式环境
+	环境地址 := 顺丰正式环境
 	if a.V是否为沙箱环境 {
-		url1 = 顺丰沙箱环境
+		环境地址 = 顺丰沙箱环境
 	}
-	by, err = util.F发送POST请求(url1+myurl, "")
+	by, err = util.F发送POST请求(环境地址+myurl, "")
 	return
 }
 
