@@ -47,16 +47,16 @@ func F新建链接(用户id, 检验码, 月结账号 string, 沙箱环境 ...int
 }
 
 //下单前有些参数要检验一下最好。。。
-func (a *Client) F下单(body string) (err error) {
+func (a *Client) F下单(body string) (by []byte, err error) {
 
 	data := map[string]interface{}{}
 	json.Unmarshal([]byte(body), &data)
 
-	by, err := a.F发送请求(下单服务, data)
+	by, err = a.F发送请求(下单服务, data)
 	if err != nil {
 		return
 	}
-	fmt.Println("数据是:", string(by))
+	//fmt.Println("数据是:", string(by))
 	return
 }
 
@@ -66,6 +66,7 @@ func (a *Client) F发送请求(serverid string, body interface{}) (by []byte, er
 	case 下单服务, 查询服务:
 	default:
 		err = errors.New("未在服务列表")
+		return
 	}
 	myurl := 下单
 
