@@ -1,4 +1,4 @@
-package gosf
+package sf
 
 import (
 	"crypto/md5"

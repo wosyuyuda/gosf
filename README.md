@@ -9,7 +9,7 @@
 ```
 go get github.com/wosyuyuda/gosf
 
-client :=gosf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
+client :=sf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
 client.F下单(body)
 
 
