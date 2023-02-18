@@ -16,15 +16,15 @@ order := sf.SFOrder{
 			{Name: "苹果手机"},
 		},
 		ContactInfoList: []sf.ContactInfo{
-			{ContactType: V寄件人, Address: "十堰市丹江口市公园路155号", City: "十堰市", Contact: "张三丰",
+			{ContactType: sf.V寄件人, Address: "十堰市丹江口市公园路155号", City: "十堰市", Contact: "张三丰",
 				County: "武当山风景区", Mobile: "17888888888", Province: "湖北省"},
-			{ContactType: V收件人, Address: "湖北省襄阳市襄城区环城东路122号", City: "襄阳市", Contact: "郭襄阳",
+			{ContactType: sf.V收件人, Address: "湖北省襄阳市襄城区环城东路122号", City: "襄阳市", Contact: "郭襄阳",
 				County: "襄城区", Mobile: "18963828829", Province: "湖北省"},
 		},
 	}
 
 	//json.Unmarshal([]byte(body), &order)
-	res, err := SF.F下单(&order)
+	res, err := client.F下单(&order)
 	if err != nil {
 		fmt.Println("err:", err.Error())
 		return
