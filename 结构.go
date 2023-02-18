@@ -1,4 +1,4 @@
-package model
+package sf
 
 type SFOrder struct {
 	//XMLName           xml.Name `json:"Order"`

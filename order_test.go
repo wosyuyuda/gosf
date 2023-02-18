@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"testing"
-
-	"github.com/wosyuyuda/gosf/model"
 )
 
 var (
@@ -14,16 +12,15 @@ var (
 
 func init() {
 	SF = F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
-
 }
 
 func TestF下单(t *testing.T) {
-	order := model.SFOrder{
+	order := SFOrder{
 		IsReturnRoutelabel: 1,
-		CargoDetails: []model.CargoDetail{
+		CargoDetails: []CargoDetail{
 			{Name: "苹果手机"},
 		},
-		ContactInfoList: []model.ContactInfo{
+		ContactInfoList: []ContactInfo{
 			{ContactType: V寄件人, Address: "十堰市丹江口市公园路155号", City: "十堰市", Contact: "张三丰",
 				County: "武当山风景区", Mobile: "17888888888", Province: "湖北省"},
 			{ContactType: V收件人, Address: "湖北省襄阳市襄城区环城东路122号", City: "襄阳市", Contact: "郭襄阳",
@@ -45,13 +42,13 @@ var (
 )
 
 func TestF解析(t *testing.T) {
-	res := new(model.Response)
+	res := new(Response)
 	if err := json.Unmarshal([]byte(db), res); err != nil {
 		fmt.Println("err:", err.Error())
 		return
 	}
 	fmt.Println("数据是:", res.ApiResultData)
-	rdata := new(model.OrderResponse)
+	rdata := new(OrderResponse)
 	if err := json.Unmarshal([]byte(res.ApiResultData), rdata); err != nil {
 		fmt.Println("err:", err.Error())
 		return

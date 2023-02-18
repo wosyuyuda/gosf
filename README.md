@@ -10,12 +10,12 @@
 go get github.com/wosyuyuda/gosf
 
 client :=sf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
-order := model.SFOrder{
+order := sf.SFOrder{
 		IsReturnRoutelabel: 1,
-		CargoDetails: []model.CargoDetail{
+		CargoDetails: []sf.CargoDetail{
 			{Name: "苹果手机"},
 		},
-		ContactInfoList: []model.ContactInfo{
+		ContactInfoList: []sf.ContactInfo{
 			{ContactType: V寄件人, Address: "十堰市丹江口市公园路155号", City: "十堰市", Contact: "张三丰",
 				County: "武当山风景区", Mobile: "17888888888", Province: "湖北省"},
 			{ContactType: V收件人, Address: "湖北省襄阳市襄城区环城东路122号", City: "襄阳市", Contact: "郭襄阳",
@@ -24,7 +24,7 @@ order := model.SFOrder{
 	}
 
 	//json.Unmarshal([]byte(body), &order)
-	res, err := client.F下单(&order)
+	res, err := SF.F下单(&order)
 	if err != nil {
 		fmt.Println("err:", err.Error())
 		return
