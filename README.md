@@ -31,6 +31,10 @@ order := sf.SFOrder{
 	}
 	fmt.Println("res:", res)
 
+	其它方法请直接使用
+	client.F发送请求(服务code,请求数据)
+	请求数据建议为str或者map结构，服务code请自行查看
+
 ```
 下个版权将添加相应的结构体，优化使用功能
 
