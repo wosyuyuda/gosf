@@ -9,7 +9,7 @@
 ```
 go get github.com/wosyuyuda/gosf
 
-client :=sf.F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
+client :=sf.F新建链接("QQB********pcUCKV", "HdOrk7Wu9uQiX********BBYV40emI7dN", "7551234567", V沙箱环境)
 order := sf.SFOrder{
 		IsReturnRoutelabel: 1,
 		CargoDetails: []sf.CargoDetail{

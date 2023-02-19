@@ -11,7 +11,7 @@ var (
 )
 
 func init() {
-	SF = F新建链接("QQBXX1pcUCKV", "HdOrk7Wu9uQiXnjXO6kaBBYV40emI7dN", "7551234567", V沙箱环境)
+	SF = F新建链接("QQB***pcUCKV", "HdOrk7Wu9iX********BBYV40emI7dN", "7551234567", V沙箱环境)
 }
 
 func TestF下单(t *testing.T) {
