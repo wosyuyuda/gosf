@@ -9,6 +9,13 @@
 ```
 go get github.com/wosyuyuda/gosf
 
+
+```
+下个版权将添加相应的结构体，优化使用功能
+
+#### 使用说明
+
+```
 client :=sf.F新建链接("QQB********pcUCKV", "HdOrk7Wu9uQiX********BBYV40emI7dN", "7551234567", V沙箱环境)
 order := sf.SFOrder{
 		IsReturnRoutelabel: 1,
@@ -34,15 +41,7 @@ order := sf.SFOrder{
 	其它方法请直接使用
 	client.F发送请求(服务code,请求数据)
 	请求数据建议为str或者map结构，服务code请自行查看
-
 ```
-下个版权将添加相应的结构体，优化使用功能
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### 参与贡献
 
