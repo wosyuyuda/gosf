@@ -11,7 +11,17 @@ var (
 )
 
 func init() {
-	SF = F新建链接("QQB***pcUCKV", "HdOrk7Wu9iX********BBYV40emI7dN", "7551234567", V沙箱环境)
+	SF = F新建链接("QQBXX1y7AjiF", "p4rgnnDZfDz****IwxJXm6R8W", "7551234567", V沙箱环境)
+}
+
+func TestF查询(t *testing.T) {
+	dd, err := SF.F快递查询("SF1697391386502")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(dd)
+
 }
 
 func TestF下单(t *testing.T) {
