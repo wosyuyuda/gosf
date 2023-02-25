@@ -42,9 +42,9 @@ func (a *Client) F下单(body *SFOrder) (res *OrderResponse, err error) {
 }
 
 //不传为顺丰的单号，传了值则为商家单号
-func (a *Client) F快递查询(id string, 顺丰单号 ...int) (res *OrderResponse, err error) {
+func (a *Client) F快递查询(id []string, 顺丰单号 ...int) (res *OrderResponse, err error) {
 	search := new(SearchRoute)
-	search.TrackingNumber = []string{id}
+	search.TrackingNumber = id
 	//判断id是顺丰的单号还是自带的单号
 	if len(顺丰单号) == 0 {
 		search.TrackingType = 1
