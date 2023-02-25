@@ -41,6 +41,15 @@ order := sf.SFOrder{
 	其它方法请直接使用
 	client.F发送请求(服务code,请求数据)
 	请求数据建议为str或者map结构，服务code请自行查看
+
+	//查询快递
+	id := []string{"SF1697391386502"}
+	dd, err := SF.F快递查询(id)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(dd)
 ```
 
 #### 参与贡献
